@@ -3,7 +3,6 @@ package com.dgjalic.gyrosmedievalarmory;
 import com.dgjalic.gyrosmedievalarmory.block.BlockRegistry;
 import com.dgjalic.gyrosmedievalarmory.item.ItemRegistry;
 import com.mojang.logging.LogUtils;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -23,7 +22,7 @@ public class GyrosMedievalArmory
         IEventBus modEventBus = context.getModEventBus();
 
         ItemRegistry.REGISTRY.register(modEventBus);
-        BlockRegistry.BLOCKS.register(modEventBus);
+        BlockRegistry.REGISTRY.register(modEventBus);
 //        MinecraftForge.EVENT_BUS.register(this);
 
 //        context.registerConfig(ModConfig.Type.COMMON, Config.SPEC);

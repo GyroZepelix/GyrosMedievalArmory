@@ -21,6 +21,6 @@ public class BlockRegistry {
     }
 
     private static <T extends Block> RegistryObject<Item> registerBlockItem(String name, RegistryObject<T> block) {
-        return ItemRegistry.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
+        return ItemRegistry.REGISTRY.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
     }
 }

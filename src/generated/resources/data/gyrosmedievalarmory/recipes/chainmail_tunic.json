@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "item": "gyrosmedievalarmory:chainmail_sleeveless_tunic"
+    },
+    "X": {
+      "item": "minecraft:chain"
+    }
+  },
+  "pattern": [
+    "XAX"
+  ],
+  "result": {
+    "item": "gyrosmedievalarmory:chainmail_tunic"
+  },
+  "show_notification": true
+}

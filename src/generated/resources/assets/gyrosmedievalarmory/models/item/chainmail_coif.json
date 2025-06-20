@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "gyrosmedievalarmory:item/chainmail_coif"
+  }
+}

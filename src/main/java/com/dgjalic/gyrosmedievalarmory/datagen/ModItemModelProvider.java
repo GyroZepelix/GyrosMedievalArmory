@@ -22,6 +22,12 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ItemRegistry.CHAINMAIL_SLEEVELESS_TUNIC);
         simpleItem(ItemRegistry.CHAINMAIL_LEGGINGS);
         simpleItem(ItemRegistry.CHAINMAIL_BOOTS);
+
+        simpleItem(ItemRegistry.LEATHER_CAP);
+        simpleItem(ItemRegistry.LEATHER_JACKET);
+        simpleItem(ItemRegistry.LEATHER_SLEEVELESS_JACKET);
+        simpleItem(ItemRegistry.LEATHER_HOSE);
+        simpleItem(ItemRegistry.LEATHER_BOOTS);
     }
 
     private <T extends Item> ItemModelBuilder simpleItem(RegistryObject<T> item) {

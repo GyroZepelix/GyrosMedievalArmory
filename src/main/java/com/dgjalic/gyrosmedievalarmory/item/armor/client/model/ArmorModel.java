@@ -6,7 +6,6 @@ import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import org.jetbrains.annotations.NotNull;
@@ -55,37 +54,6 @@ public class ArmorModel extends HumanoidModel<LivingEntity> {
             case FEET:
                 this.leftBoot.visible = true;
                 this.rightBoot.visible = true;
-        }
-    }
-
-    @Override
-    public void setupAnim(LivingEntity pEntity, float pLimbSwing, float pLimbSwingAmount, float pAgeInTicks, float pNetHeadYaw, float pHeadPitch) {
-        super.setupAnim(pEntity, pLimbSwing, pLimbSwingAmount, pAgeInTicks, pNetHeadYaw, pHeadPitch);
-
-        float f = 1.0F;
-        if (pEntity.getFallFlyingTicks() > 4) {
-            f = (float)pEntity.getDeltaMovement().lengthSqr();
-            f /= 0.2F;
-            f *= f * f;
-        }
-
-        if (f < 1.0F) {
-            f = 1.0F;
-        }
-
-        this.rightBoot.xRot = Mth.cos(pLimbSwing * 0.6662F) * 1.4F * pLimbSwingAmount / f;
-        this.leftBoot.xRot = Mth.cos(pLimbSwing * 0.6662F + (float)Math.PI) * 1.4F * pLimbSwingAmount / f;
-        this.rightBoot.yRot = 0.005F;
-        this.leftBoot.yRot = -0.005F;
-        this.rightBoot.zRot = 0.005F;
-        this.leftBoot.zRot = -0.005F;
-        if (this.riding) {
-            this.rightBoot.xRot = -1.4137167F;
-            this.rightBoot.yRot = ((float)Math.PI / 10F);
-            this.rightBoot.zRot = 0.07853982F;
-            this.leftLeg.xRot = -1.4137167F;
-            this.leftLeg.yRot = (-(float)Math.PI / 10F);
-            this.leftLeg.zRot = -0.07853982F;
         }
     }
 

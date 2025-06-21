@@ -8,6 +8,7 @@ import net.minecraft.Util;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.Model;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
@@ -17,6 +18,7 @@ import net.minecraftforge.client.extensions.common.IClientItemExtensions;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.EnumMap;
 import java.util.Map;
@@ -90,6 +92,7 @@ public class AbstractArmorItem extends ArmorItem {
                 //fixes visibility bug because forge pain
                 ArmorModel model = getHumanoidArmorModel(livingEntity, itemStack, equipmentSlot, original);
                 copyModelProperties(original, model);
+                provider.applyOffsets(model, livingEntity, itemStack, equipmentSlot);
                 return model;
             }
 
@@ -99,6 +102,11 @@ public class AbstractArmorItem extends ArmorItem {
                 replacement.rightBoot.copyFrom(original.rightLeg);
                 replacement.leftBoot.copyFrom(original.leftLeg);
             }
+//
+//            @Override
+//            public HumanoidModel.@Nullable ArmPose getArmPose(LivingEntity entityLiving, InteractionHand hand, ItemStack itemStack) {
+//                return IClientItemExtensions.super.getArmPose(entityLiving, hand, itemStack);
+//            }
         });
     }
 

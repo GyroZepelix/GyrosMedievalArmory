@@ -3,6 +3,8 @@ package com.dgjalic.gyrosmedievalarmory.item;
 import com.dgjalic.gyrosmedievalarmory.GyrosMedievalArmory;
 import com.dgjalic.gyrosmedievalarmory.item.armor.AbstractArmorItem;
 import com.dgjalic.gyrosmedievalarmory.item.armor.client.model.ChainmailArmorModel;
+import com.dgjalic.gyrosmedievalarmory.item.armor.client.model.LeatherArmorModel;
+import com.dgjalic.gyrosmedievalarmory.item.armor.client.provider.AnimatableArmorProvider;
 import com.dgjalic.gyrosmedievalarmory.item.armor.client.provider.ArmorModelProvider;
 import com.dgjalic.gyrosmedievalarmory.item.armor.client.provider.SimpleModelProvider;
 import net.minecraft.world.entity.Entity;
@@ -29,7 +31,7 @@ public class LeatherArmorItem extends AbstractArmorItem {
 
     @Override
     protected ArmorModelProvider createModelProvider() {
-        return new SimpleModelProvider(ChainmailArmorModel::createBodyLayer, ChainmailArmorModel::new);
+        return new AnimatableArmorProvider(LeatherArmorModel::createBodyLayer, LeatherArmorModel::new);
     }
 
     @Override

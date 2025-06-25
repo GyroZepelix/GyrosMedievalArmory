@@ -21,4 +21,9 @@ public class ItemRegistry {
     public static final RegistryObject<LeatherArmorItem> LEATHER_SLEEVELESS_JACKET = REGISTRY.register("leather_sleeveless_jacket", () -> new LeatherArmorItem(ArmorItem.Type.CHESTPLATE, "leather_armor_no_sleeves"));
     public static final RegistryObject<LeatherArmorItem> LEATHER_HOSE = REGISTRY.register("leather_hose", () -> new LeatherArmorItem(ArmorItem.Type.LEGGINGS));
     public static final RegistryObject<LeatherArmorItem> LEATHER_BOOTS = REGISTRY.register("leather_boots", () -> new LeatherArmorItem(ArmorItem.Type.BOOTS));
+
+    public static final RegistryObject<IronPlateArmorItem> PLATE_BASCINET = REGISTRY.register("plate_bascinet", () -> new IronPlateArmorItem(ArmorItem.Type.HELMET));
+    public static final RegistryObject<IronPlateArmorItem> PLATE_CHESTPLATE = REGISTRY.register("plate_chestplate", () -> new IronPlateArmorItem(ArmorItem.Type.CHESTPLATE));
+    public static final RegistryObject<IronPlateArmorItem> PLATE_LEGGINGS = REGISTRY.register("plate_leggings", () -> new IronPlateArmorItem(ArmorItem.Type.LEGGINGS));
+    public static final RegistryObject<IronPlateArmorItem> PLATE_BOOTS = REGISTRY.register("plate_boots", () -> new IronPlateArmorItem(ArmorItem.Type.BOOTS));
 }

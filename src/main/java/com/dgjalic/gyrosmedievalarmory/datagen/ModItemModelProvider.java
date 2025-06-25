@@ -28,6 +28,11 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ItemRegistry.LEATHER_SLEEVELESS_JACKET);
         simpleItem(ItemRegistry.LEATHER_HOSE);
         simpleItem(ItemRegistry.LEATHER_BOOTS);
+
+        simpleItem(ItemRegistry.PLATE_BASCINET);
+        simpleItem(ItemRegistry.PLATE_CHESTPLATE);
+        simpleItem(ItemRegistry.PLATE_LEGGINGS);
+        simpleItem(ItemRegistry.PLATE_BOOTS);
     }
 
     private <T extends Item> ItemModelBuilder simpleItem(RegistryObject<T> item) {

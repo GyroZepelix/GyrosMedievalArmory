@@ -11,5 +11,14 @@
   "item.gyrosmedievalarmory.leather_jacket": "Leather Jacket",
   "item.gyrosmedievalarmory.leather_sleeveless_jacket": "Leather Sleeveless Jacket",
   "item.gyrosmedievalarmory.leather_hose": "Leather Hose",
-  "item.gyrosmedievalarmory.leather_boots": "Leather Boots"
+  "item.gyrosmedievalarmory.leather_boots": "Leather Boots",
+
+  "item.gyrosmedievalarmory.plate_helmet": "Plate Helmet",
+  "item.gyrosmedievalarmory.plate_bascinet": "Plate Bascinet",
+  "item.gyrosmedievalarmory.plate_chestplate": "Plate Chestplate",
+  "item.gyrosmedievalarmory.plate_leggings": "Plate Leggings",
+  "item.gyrosmedievalarmory.plate_boots": "Plate Boots",
+
+  "key.category.gyrosmedievalarmory": "Medieval Armory",
+  "key.gyrosmedievalarmory.open_visor": "Open Visor"
 }

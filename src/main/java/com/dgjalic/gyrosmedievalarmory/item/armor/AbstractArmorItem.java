@@ -4,26 +4,18 @@ import com.dgjalic.gyrosmedievalarmory.item.armor.client.model.ArmorModel;
 import com.dgjalic.gyrosmedievalarmory.item.armor.client.provider.ArmorModelProvider;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
-import net.minecraft.Util;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.Model;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.*;
 import net.minecraftforge.client.extensions.common.IClientItemExtensions;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.RegistryObject;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
-import java.util.EnumMap;
-import java.util.Map;
 import java.util.function.Consumer;
-import java.util.function.Function;
 
 public class AbstractArmorItem extends ArmorItem {
     public AbstractArmorItem(ArmorMaterial pMaterial, Type pType, Properties pProperties) {
@@ -65,10 +57,6 @@ public class AbstractArmorItem extends ArmorItem {
 
     protected boolean withCustomModel() { return false; }
 
-    /**
-     * @return the model provider to use
-     * no need to cache, this implementation does that already
-     */
     protected ArmorModelProvider createModelProvider() { return null;}
 
     @Override
@@ -102,34 +90,10 @@ public class AbstractArmorItem extends ArmorItem {
                 replacement.rightBoot.copyFrom(original.rightLeg);
                 replacement.leftBoot.copyFrom(original.leftLeg);
             }
-//
-//            @Override
-//            public HumanoidModel.@Nullable ArmPose getArmPose(LivingEntity entityLiving, InteractionHand hand, ItemStack itemStack) {
-//                return IClientItemExtensions.super.getArmPose(entityLiving, hand, itemStack);
-//            }
         });
     }
 
-    /**
-     * creates a custom texture for your armor in
-     * <br>{@code <nameSpace>:textures/models/armor/custom/<id>.png}
-     */
     public static String makeCustomTextureLocation(String nameSpace, String id) {
         return ResourceLocation.fromNamespaceAndPath(nameSpace, "textures/models/armor/custom/" + id + ".png").toString();
     }
-
-    /**
-     * @param registry the Register to add to
-     * @param baseName the base name of the armor
-     * @param creator a lambda function to create an instance of the armor, mostly a method reference to the constructor
-     * @return a Map mapping the ArmorType to the RegObj for the slot
-     */
-    public static <T extends AbstractArmorItem> Map<Type, RegistryObject<T>> createRegistry(DeferredRegister<Item> registry, String baseName, Function<Type, T> creator) {
-        return Util.make(new EnumMap<>(Type.class), map -> {
-            for (Type type : Type.values()) {
-                map.put(type, registry.register(baseName + "_" + type.getName(), () -> creator.apply(type)));
-            }
-        });
-    }
-
 }

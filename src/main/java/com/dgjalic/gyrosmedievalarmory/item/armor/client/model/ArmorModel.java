@@ -1,5 +1,6 @@
 package com.dgjalic.gyrosmedievalarmory.item.armor.client.model;
 
+import com.google.common.collect.ImmutableList;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.model.HumanoidModel;
@@ -62,5 +63,10 @@ public class ArmorModel extends HumanoidModel<LivingEntity> {
         super.renderToBuffer(stack, consumer, packedLight, packedOverlay, r, g, b, a);
         this.leftBoot.render(stack, consumer, packedLight, packedOverlay, r, g, b, a);
         this.rightBoot.render(stack, consumer, packedLight, packedOverlay, r, g, b, a);
+    }
+
+    @Override
+    protected @NotNull Iterable<ModelPart> bodyParts() {
+        return ImmutableList.of(this.body, this.rightArm, this.leftArm, this.rightLeg, this.leftLeg, this.hat, this.rightBoot, this.leftBoot);
     }
 }

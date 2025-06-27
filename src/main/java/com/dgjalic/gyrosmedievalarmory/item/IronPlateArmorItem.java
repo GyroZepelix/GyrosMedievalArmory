@@ -37,5 +37,4 @@ public class IronPlateArmorItem extends AbstractArmorItem implements OpenableHel
     public @Nullable String getArmorTexture(ItemStack stack, Entity entity, EquipmentSlot slot, String type) {
         return TEXTURE_LOCATION;
     }
-
 }

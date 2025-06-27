@@ -35,10 +35,5 @@ public class TwoStateArmorProvider implements ArmorModelProvider{
         }
 
         return model;
-
-//        if (itemStack.getItem() instanceof OpenableHelmet openableHelmet && openableHelmet.isOpened(itemStack)) {
-//            return endStateModel;
-//        }
-//        return model;
     }
 }

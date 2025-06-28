@@ -1,10 +1,9 @@
 package com.dgjalic.gyrosmedievalarmory.networking.packet;
 
 import com.dgjalic.gyrosmedievalarmory.item.armor.OpenableHelmet;
-import net.minecraft.client.Minecraft;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.network.NetworkEvent;
 
@@ -27,7 +26,7 @@ public class VisorOpenedSyncS2CPacket {
     public boolean handle(Supplier<NetworkEvent.Context> supplier) {
         NetworkEvent.Context context = supplier.get();
         context.enqueueWork(() -> {
-            Player player = Minecraft.getInstance().player;
+            ServerPlayer player = context.getSender();
             if (player != null) {
                 ItemStack helmet = player.getItemBySlot(EquipmentSlot.HEAD);
                 if (helmet.getItem() instanceof OpenableHelmet openableHelmet) {

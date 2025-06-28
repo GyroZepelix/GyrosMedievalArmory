@@ -8,5 +8,5 @@ import net.minecraft.world.item.ItemStack;
 public interface ArmorModelProvider {
     ArmorModel getModel(LivingEntity living, ItemStack itemStack, EquipmentSlot slot);
 
-    default void applyOffsets(ArmorModel model, LivingEntity livingEntity, ItemStack itemStack, EquipmentSlot equipmentSlot) {}
+    default void applyAnimations(ArmorModel model, LivingEntity livingEntity, ItemStack itemStack, EquipmentSlot equipmentSlot) {}
 }

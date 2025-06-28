@@ -80,7 +80,7 @@ public class AbstractArmorItem extends ArmorItem {
                 //fixes visibility bug because forge pain
                 ArmorModel model = getHumanoidArmorModel(livingEntity, itemStack, equipmentSlot, original);
                 copyModelProperties(original, model);
-                provider.applyOffsets(model, livingEntity, itemStack, equipmentSlot);
+                provider.applyAnimations(model, livingEntity, itemStack, equipmentSlot);
                 return model;
             }
 

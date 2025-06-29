@@ -1,8 +1,7 @@
 package com.dgjalic.gyrosmedievalarmory.networking;
 
 import com.dgjalic.gyrosmedievalarmory.GyrosMedievalArmory;
-import com.dgjalic.gyrosmedievalarmory.networking.packet.OpenVisorC2SPacket;
-import com.dgjalic.gyrosmedievalarmory.networking.packet.VisorOpenedSyncS2CPacket;
+import com.dgjalic.gyrosmedievalarmory.networking.packet.SetHelmetAnimationState;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.network.NetworkDirection;
@@ -25,16 +24,10 @@ public class ModPackets {
                 .serverAcceptedVersions(s -> true)
                 .simpleChannel();
 
-        INSTANCE.messageBuilder(OpenVisorC2SPacket.class, id(), NetworkDirection.PLAY_TO_SERVER)
-                .decoder(OpenVisorC2SPacket::new)
-                .encoder(OpenVisorC2SPacket::toBytes)
-                .consumerMainThread(OpenVisorC2SPacket::handle)
-                .add();
-
-        INSTANCE.messageBuilder(VisorOpenedSyncS2CPacket.class, id(), NetworkDirection.PLAY_TO_CLIENT)
-                .decoder(VisorOpenedSyncS2CPacket::new)
-                .encoder(VisorOpenedSyncS2CPacket::toBytes)
-                .consumerMainThread(VisorOpenedSyncS2CPacket::handle)
+        INSTANCE.messageBuilder(SetHelmetAnimationState.class, id(), NetworkDirection.PLAY_TO_SERVER)
+                .decoder(SetHelmetAnimationState::new)
+                .encoder(SetHelmetAnimationState::toBytes)
+                .consumerMainThread(SetHelmetAnimationState::handle)
                 .add();
     }
 

@@ -1,5 +1,6 @@
 package com.dgjalic.gyrosmedievalarmory.item.armor;
 
+import com.dgjalic.gyrosmedievalarmory.animation.Animatable;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -7,8 +8,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
-public interface OpenableHelmet {
-    default boolean changeHelmetStyle(ItemStack openableHelmetStack, Level level, Player player) {
+public interface OpenableHelmet extends Animatable {
+    default boolean changeOpened(ItemStack openableHelmetStack, Level level, Player player) {
         final String IS_OPENED_KEY = "Opened";
 
         CompoundTag compoundTag = openableHelmetStack.getOrCreateTag();
@@ -24,7 +25,7 @@ public interface OpenableHelmet {
         return toChange;
     };
 
-    default void setHelmetStyle(ItemStack openableHelmetStack, Level level, Player player, boolean opened) {
+    default void setOpened(ItemStack openableHelmetStack, Level level, Player player, boolean opened) {
         final String IS_OPENED_KEY = "Opened";
 
         CompoundTag compoundTag = openableHelmetStack.getOrCreateTag();
@@ -47,4 +48,5 @@ public interface OpenableHelmet {
 
         return compoundTag.getBoolean(IS_OPENED_KEY);
     }
+
 }

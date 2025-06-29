@@ -4,9 +4,12 @@ import com.dgjalic.gyrosmedievalarmory.item.armor.client.model.ArmorModel;
 import com.dgjalic.gyrosmedievalarmory.item.armor.client.provider.ArmorModelProvider;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
+import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.Model;
+import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
@@ -57,8 +60,12 @@ public class AbstractArmorItem extends ArmorItem {
 
     protected boolean withCustomModel() { return false; }
 
-    protected ArmorModelProvider createModelProvider() { return null;}
+    public ArmorModelProvider createModelProvider() { return null;}
 
+    /***
+     * The rendering here should never happen because of the custom renderer implementation in MixinHumanoidArmorLayer. Due to compatibility with some mods I will leave this here.
+     * @see com.dgjalic.gyrosmedievalarmory.mixin.MixinHumanoidArmorLayer
+     */
     @Override
     public void initializeClient(@NotNull Consumer<IClientItemExtensions> consumer) {
         if (!withCustomModel()) return;
@@ -77,23 +84,14 @@ public class AbstractArmorItem extends ArmorItem {
 
             @Override
             public @NotNull Model getGenericArmorModel(LivingEntity livingEntity, ItemStack itemStack, EquipmentSlot equipmentSlot, HumanoidModel<?> original) {
-                //fixes visibility bug because forge pain
                 ArmorModel model = getHumanoidArmorModel(livingEntity, itemStack, equipmentSlot, original);
-                copyModelProperties(original, model);
-                provider.applyAnimations(model, livingEntity, itemStack, equipmentSlot);
+                model.copyModelProperties(original);
                 return model;
-            }
-
-            @SuppressWarnings("unchecked")
-            private <T extends LivingEntity> void copyModelProperties(HumanoidModel<T> original, ArmorModel replacement) {
-                original.copyPropertiesTo((HumanoidModel<T>) replacement);
-                replacement.rightBoot.copyFrom(original.rightLeg);
-                replacement.leftBoot.copyFrom(original.leftLeg);
             }
         });
     }
 
-    public static String makeCustomTextureLocation(String nameSpace, String id) {
-        return ResourceLocation.fromNamespaceAndPath(nameSpace, "textures/models/armor/custom/" + id + ".png").toString();
+    public static ResourceLocation makeCustomTextureLocation(String nameSpace, String id) {
+        return ResourceLocation.fromNamespaceAndPath(nameSpace, "textures/models/armor/custom/" + id + ".png");
     }
 }

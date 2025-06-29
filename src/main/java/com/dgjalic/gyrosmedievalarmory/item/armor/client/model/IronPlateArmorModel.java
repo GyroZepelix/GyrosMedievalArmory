@@ -1,13 +1,74 @@
 package com.dgjalic.gyrosmedievalarmory.item.armor.client.model;
 
+import com.dgjalic.gyrosmedievalarmory.animation.AnimationState;
+import com.dgjalic.gyrosmedievalarmory.animation.AnimationUtil;
+import com.dgjalic.gyrosmedievalarmory.item.armor.OpenableHelmet;
+import com.dgjalic.gyrosmedievalarmory.networking.ModPackets;
+import com.dgjalic.gyrosmedievalarmory.networking.packet.SetHelmetAnimationState;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
+import org.jetbrains.annotations.NotNull;
 
 public class IronPlateArmorModel extends ArmorModel{
+	private static final float HELMET_OPEN_SPEED = 20f;
+	private final ModelPart visor;
+	private final ModelPart visor_black;
 
 	public IronPlateArmorModel(ModelPart pRoot) {
 		super(pRoot);
+		this.visor = this.hat.getChild("visor");
+		this.visor_black = this.hat.getChild("visor_black");
+	}
+
+	@Override
+	protected void setupArmorPartAnim(@NotNull LivingEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+		ItemStack helmet = entity.getItemBySlot(EquipmentSlot.HEAD);
+		if (helmet.getItem() instanceof OpenableHelmet openableHelmet) {
+			float visorXRot = this.visor.xRot;
+
+			boolean isOpened = openableHelmet.isOpened(helmet);
+			AnimationState animationState = openableHelmet.getAnimationStatus(helmet);
+			float animationStartTick = openableHelmet.getTimestamp(helmet);
+
+			switch (animationState) {
+                case IDLE -> {
+					if (isOpened) {
+						visor.xRot = -1.5f;
+					} else {
+						visor.xRot = 0f;
+					}
+                }
+                case QUEUED -> {
+					if (!isOpened) {
+						visor.xRot = -1.5f;
+					} else {
+						visor.xRot = 0f;
+					}
+					ModPackets.sendToServer(new SetHelmetAnimationState(isOpened, AnimationState.PLAYING, ageInTicks));
+                }
+                case PLAYING -> {
+					if (isOpened) {
+						this.visor.xRot = AnimationUtil.linearLerp(ageInTicks, animationStartTick, HELMET_OPEN_SPEED, 0f, -1.5f);
+					} else {
+						this.visor.xRot = AnimationUtil.linearLerp(ageInTicks, animationStartTick, HELMET_OPEN_SPEED, -1.5f, -0f);
+					}
+                }
+            }
+
+			if (visorXRot != 0.0f) {
+				this.visor_black.xScale = 0;
+				this.visor_black.yScale = 0;
+				this.visor_black.zScale = 0;
+			} else {
+				this.visor_black.xScale = 1;
+				this.visor_black.yScale = 1;
+				this.visor_black.zScale = 1;
+			}
+		}
 	}
 
 	public static LayerDefinition createBodyLayer() {

@@ -1,6 +1,9 @@
 package com.dgjalic.gyrosmedievalarmory.item;
 
 import com.dgjalic.gyrosmedievalarmory.GyrosMedievalArmory;
+import com.dgjalic.gyrosmedievalarmory.item.armor.ChainmailArmorItem;
+import com.dgjalic.gyrosmedievalarmory.item.armor.IronPlateArmorItem;
+import com.dgjalic.gyrosmedievalarmory.item.armor.LeatherArmorItem;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.DeferredRegister;

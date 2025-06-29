@@ -7,6 +7,7 @@ import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import org.jetbrains.annotations.NotNull;
@@ -63,6 +64,23 @@ public class ArmorModel extends HumanoidModel<LivingEntity> {
         super.renderToBuffer(stack, consumer, packedLight, packedOverlay, r, g, b, a);
         this.leftBoot.render(stack, consumer, packedLight, packedOverlay, r, g, b, a);
         this.rightBoot.render(stack, consumer, packedLight, packedOverlay, r, g, b, a);
+    }
+
+    /**
+     * Override this function to animate the model, instead of overriding {@link ArmorModel#setupAnim}.
+     */
+    protected void setupArmorPartAnim(@NotNull LivingEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {};
+
+    @Override
+    public void setupAnim(@NotNull LivingEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+        this.setupArmorPartAnim(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
+    }
+
+    @SuppressWarnings("unchecked")
+    public <M extends HumanoidModel<? extends LivingEntity>> void copyModelProperties(M original) {
+        original.copyPropertiesTo((HumanoidModel) this);
+        this.rightBoot.copyFrom(original.rightLeg);
+        this.leftBoot.copyFrom(original.leftLeg);
     }
 
     @Override

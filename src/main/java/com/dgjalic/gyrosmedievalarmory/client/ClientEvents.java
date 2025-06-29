@@ -1,8 +1,13 @@
 package com.dgjalic.gyrosmedievalarmory.client;
 
 import com.dgjalic.gyrosmedievalarmory.GyrosMedievalArmory;
+import com.dgjalic.gyrosmedievalarmory.animation.AnimationState;
+import com.dgjalic.gyrosmedievalarmory.item.armor.OpenableHelmet;
 import com.dgjalic.gyrosmedievalarmory.networking.ModPackets;
-import com.dgjalic.gyrosmedievalarmory.networking.packet.OpenVisorC2SPacket;
+import com.dgjalic.gyrosmedievalarmory.networking.packet.SetHelmetAnimationState;
+import net.minecraft.client.Minecraft;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
@@ -14,9 +19,25 @@ public class ClientEvents {
     public static class ClientForgeEvents {
         @SubscribeEvent
         public static void onKeyInput(InputEvent.Key event) {
-            if(KeyBinding.OPEN_VISOR_KEY.consumeClick()) {
-                ModPackets.sendToServer(new OpenVisorC2SPacket());
+            if (!KeyBinding.OPEN_VISOR_KEY.consumeClick()) {
+                return;
             }
+            assert Minecraft.getInstance().player != null;
+            ItemStack helmet = Minecraft.getInstance().player.getItemBySlot(EquipmentSlot.HEAD);
+
+            if (!(helmet.getItem() instanceof OpenableHelmet openableHelmet)) {
+                return;
+            }
+
+            AnimationState animationState = openableHelmet.getAnimationStatus(helmet);
+
+            if (AnimationState.IDLE != animationState) {
+                return;
+            }
+            boolean isOpened = openableHelmet.isOpened(helmet);
+            float timestamp = openableHelmet.getTimestamp(helmet);
+
+            ModPackets.sendToServer(new SetHelmetAnimationState(isOpened, AnimationState.QUEUED, timestamp));
         }
     }
 

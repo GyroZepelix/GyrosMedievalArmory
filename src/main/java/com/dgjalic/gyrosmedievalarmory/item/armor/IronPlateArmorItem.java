@@ -11,7 +11,7 @@ import net.minecraft.world.item.ArmorMaterials;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.Nullable;
 
-public class IronPlateArmorItem extends AbstractArmorItem implements OpenableHelmet {
+public class IronPlateArmorItem extends AbstractArmorItem implements LegacyOpenableHelmet {
     private ResourceLocation TEXTURE_LOCATION = makeCustomTextureLocation(GyrosMedievalArmory.MODID, "iron_plate_armor");
     public IronPlateArmorItem(Type pType) {
         super(ArmorMaterials.LEATHER, pType, new Properties());
@@ -37,8 +37,6 @@ public class IronPlateArmorItem extends AbstractArmorItem implements OpenableHel
                 TEXTURE_LOCATION
         );
     }
-
-
 
     @Override
     public @Nullable String getArmorTexture(ItemStack stack, Entity entity, EquipmentSlot slot, String type) {

@@ -2,9 +2,10 @@ package com.dgjalic.gyrosmedievalarmory.item.armor.client.model;
 
 import com.dgjalic.gyrosmedievalarmory.animation.AnimationState;
 import com.dgjalic.gyrosmedievalarmory.animation.AnimationUtil;
+import com.dgjalic.gyrosmedievalarmory.item.armor.LegacyOpenableHelmet;
 import com.dgjalic.gyrosmedievalarmory.item.armor.OpenableHelmet;
 import com.dgjalic.gyrosmedievalarmory.networking.ModPackets;
-import com.dgjalic.gyrosmedievalarmory.networking.packet.SetHelmetAnimationState;
+import com.dgjalic.gyrosmedievalarmory.networking.packet.SetHelmetAnimationStateC2SPacket;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
@@ -27,6 +28,25 @@ public class IronPlateArmorModel extends ArmorModel{
 	@Override
 	protected void setupArmorPartAnim(@NotNull LivingEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 		ItemStack helmet = entity.getItemBySlot(EquipmentSlot.HEAD);
+		if (helmet.getItem() instanceof LegacyOpenableHelmet openableHelmet) {
+			boolean isOpened = openableHelmet.isOpened(helmet);
+
+			if (isOpened) {
+				this.visor_black.xScale = 0;
+				this.visor_black.yScale = 0;
+				this.visor_black.zScale = 0;
+				visor.xRot = -1.5f;
+			} else {
+				this.visor_black.xScale = 1;
+				this.visor_black.yScale = 1;
+				this.visor_black.zScale = 1;
+				visor.xRot = 0f;
+			}
+		}
+	}
+
+	protected void newSetupArmorPartAnim(@NotNull LivingEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+		ItemStack helmet = entity.getItemBySlot(EquipmentSlot.HEAD);
 		if (helmet.getItem() instanceof OpenableHelmet openableHelmet) {
 			float visorXRot = this.visor.xRot;
 
@@ -48,7 +68,7 @@ public class IronPlateArmorModel extends ArmorModel{
 					} else {
 						visor.xRot = 0f;
 					}
-					ModPackets.sendToServer(new SetHelmetAnimationState(isOpened, AnimationState.PLAYING, ageInTicks));
+					ModPackets.sendToServer(new SetHelmetAnimationStateC2SPacket(isOpened, AnimationState.PLAYING, ageInTicks));
                 }
                 case PLAYING -> {
 					if (isOpened) {

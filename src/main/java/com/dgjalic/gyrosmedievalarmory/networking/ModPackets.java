@@ -1,7 +1,7 @@
 package com.dgjalic.gyrosmedievalarmory.networking;
 
 import com.dgjalic.gyrosmedievalarmory.GyrosMedievalArmory;
-import com.dgjalic.gyrosmedievalarmory.networking.packet.SetHelmetAnimationState;
+import com.dgjalic.gyrosmedievalarmory.networking.packet.OpenVisorC2SPacket;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.network.NetworkDirection;
@@ -24,11 +24,17 @@ public class ModPackets {
                 .serverAcceptedVersions(s -> true)
                 .simpleChannel();
 
-        INSTANCE.messageBuilder(SetHelmetAnimationState.class, id(), NetworkDirection.PLAY_TO_SERVER)
-                .decoder(SetHelmetAnimationState::new)
-                .encoder(SetHelmetAnimationState::toBytes)
-                .consumerMainThread(SetHelmetAnimationState::handle)
+        INSTANCE.messageBuilder(OpenVisorC2SPacket.class, id(), NetworkDirection.PLAY_TO_SERVER)
+                .decoder(OpenVisorC2SPacket::new)
+                .encoder(OpenVisorC2SPacket::toBytes)
+                .consumerMainThread(OpenVisorC2SPacket::handle)
                 .add();
+
+//        INSTANCE.messageBuilder(OpenVisorC2SPacket.class, id(), NetworkDirection.PLAY_TO_SERVER)
+//                .decoder(OpenVisorC2SPacket::new)
+//                .encoder(OpenVisorC2SPacket::toBytes)
+//                .consumerMainThread(OpenVisorC2SPacket::handle)
+//                .add();
     }
 
     public static <T> void sendToServer(T message) {

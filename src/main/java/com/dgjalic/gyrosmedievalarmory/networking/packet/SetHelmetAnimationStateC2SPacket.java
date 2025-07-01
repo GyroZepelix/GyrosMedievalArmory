@@ -13,7 +13,8 @@ import net.minecraftforge.network.NetworkEvent;
 import java.nio.ByteBuffer;
 import java.util.function.Supplier;
 
-public class SetHelmetAnimationState {
+//TODO: Refactor so animation state is stored locally
+public class SetHelmetAnimationStateC2SPacket {
     private static final byte TRUE_BIT_MASK = (byte) 0b10000000;
     private static final byte FALSE_BIT_MASK = (byte) 0b00000000;
 
@@ -21,12 +22,12 @@ public class SetHelmetAnimationState {
     private final AnimationState animationState;
     private final float timestamp;
 
-    public SetHelmetAnimationState(boolean opened, AnimationState animationState, float timestamp) {
+    public SetHelmetAnimationStateC2SPacket(boolean opened, AnimationState animationState, float timestamp) {
         this.opened = opened;
         this.animationState = animationState;
         this.timestamp = timestamp;
     }
-    public SetHelmetAnimationState(FriendlyByteBuf buf) {
+    public SetHelmetAnimationStateC2SPacket(FriendlyByteBuf buf) {
         ByteBuf bytes = buf.readBytes(5);
 
         byte animStateWithOpenedState = bytes.getByte(0);

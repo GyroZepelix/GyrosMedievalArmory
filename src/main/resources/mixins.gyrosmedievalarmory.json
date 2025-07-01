@@ -6,9 +6,6 @@
   "injectors": {
     "defaultRequire": 1
   },
-  "mixins": [
-    "TestMixin"
-  ],
   "client": [
     "MixinHumanoidArmorLayer"
   ]

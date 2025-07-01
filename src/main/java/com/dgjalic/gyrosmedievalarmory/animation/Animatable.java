@@ -7,6 +7,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
+//TODO: Refactor so animation state is stored locally
 public interface Animatable {
     default float getTimestamp(ItemStack animatableStack) {
         final String TIMESTAMP = "AnimTimestamp";

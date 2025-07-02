@@ -19,6 +19,20 @@
   "item.gyrosmedievalarmory.plate_leggings": "Plate Leggings",
   "item.gyrosmedievalarmory.plate_boots": "Plate Boots",
 
+  "item.gyrosmedievalarmory.crude_copper_helmet": "Crude Copper Helmet",
+  "item.gyrosmedievalarmory.crude_copper_chestplate": "Crude Copper Chestplate",
+  "item.gyrosmedievalarmory.crude_copper_leggings": "Crude Copper Leggings",
+  "item.gyrosmedievalarmory.crude_copper_boots": "Crude Copper Boots",
+
+  "item.gyrosmedievalarmory.decorated_copper_helmet": "Decorated Copper Helmet",
+  "item.gyrosmedievalarmory.copper_helmet": "Copper Helmet",
+  "item.gyrosmedievalarmory.copper_chestplate": "Copper Chestplate",
+  "item.gyrosmedievalarmory.copper_leggings": "Copper Leggings",
+  "item.gyrosmedievalarmory.copper_boots": "Copper Boots",
+
+  "item.gyrosmedievalarmory.iron_hammer": "Hammer",
+  "item.gyrosmedievalarmory.wooden_hammer": "Mallet",
+
   "key.category.gyrosmedievalarmory": "Medieval Armory",
   "key.gyrosmedievalarmory.open_visor": "Open Visor"
 }

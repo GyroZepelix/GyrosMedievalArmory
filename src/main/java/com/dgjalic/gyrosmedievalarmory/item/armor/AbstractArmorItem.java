@@ -71,7 +71,7 @@ public class AbstractArmorItem extends ArmorItem {
 
             @Override
             public @NotNull ArmorModel getHumanoidArmorModel(LivingEntity living, ItemStack stack, EquipmentSlot slot, HumanoidModel<?> original) {
-                ArmorModel armorModel = provider.getModel(living, stack, slot);
+                ArmorModel armorModel = provider.getModel();
                 armorModel.partVisible(slot);
                 armorModel.crouching = original.crouching;
                 armorModel.riding = original.riding;

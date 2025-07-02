@@ -7,7 +7,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 
 public interface ArmorModelProvider {
-    ArmorModel getModel(LivingEntity living, ItemStack itemStack, EquipmentSlot slot);
+    ArmorModel getModel();
 
     ResourceLocation getTexture();
 

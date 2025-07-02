@@ -45,13 +45,13 @@ public class ArmorModel extends HumanoidModel<LivingEntity> {
                 this.hat.visible = true;
                 break;
             case CHEST:
-//                this.body.visible = true;
+                this.body.visible = true;
                 this.rightArm.visible = true;
-//                this.leftArm.visible = true;
+                this.leftArm.visible = true;
                 break;
             case LEGS:
                 this.leftLeg.visible = true;
-//                this.rightLeg.visible = true;
+                this.rightLeg.visible = true;
                 break;
             case FEET:
                 this.leftBoot.visible = true;

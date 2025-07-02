@@ -42,7 +42,7 @@ public abstract class MixinHumanoidArmorLayer<T extends LivingEntity, M extends 
             if (armorItem.getEquipmentSlot() == slot) {
                 ArmorModelProvider provider = armorItem.createModelProvider();
                 if(provider != null){
-                    ArmorModel model = provider.getModel(entity, itemStack, slot);
+                    ArmorModel model = provider.getModel();
                     model.partVisible(slot);
 
                     model.copyModelProperties(this.getParentModel());

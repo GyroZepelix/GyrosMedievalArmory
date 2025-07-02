@@ -14,11 +14,11 @@ import org.jetbrains.annotations.Nullable;
 public class IronPlateArmorItem extends AbstractArmorItem implements LegacyOpenableHelmet {
     private ResourceLocation TEXTURE_LOCATION = makeCustomTextureLocation(GyrosMedievalArmory.MODID, "iron_plate_armor");
     public IronPlateArmorItem(Type pType) {
-        super(ArmorMaterials.LEATHER, pType, new Properties());
+        super(ModArmorMaterials.IRON_PLATE, pType, new Properties());
     }
 
     public IronPlateArmorItem(Type pType, String textureLocation) {
-        super(ArmorMaterials.CHAIN, pType, new Properties());
+        super(ModArmorMaterials.IRON_PLATE, pType, new Properties());
         TEXTURE_LOCATION = makeCustomTextureLocation(GyrosMedievalArmory.MODID, textureLocation);
     }
 
@@ -26,8 +26,6 @@ public class IronPlateArmorItem extends AbstractArmorItem implements LegacyOpena
     protected boolean withCustomModel() {
         return true;
     }
-
-    private static final float ANIMATION_SPEED = 0.1f;
 
     @Override
     public ArmorModelProvider createModelProvider() {

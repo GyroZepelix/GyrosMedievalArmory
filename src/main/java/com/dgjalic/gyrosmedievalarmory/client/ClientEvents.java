@@ -1,15 +1,14 @@
 package com.dgjalic.gyrosmedievalarmory.client;
 
 import com.dgjalic.gyrosmedievalarmory.GyrosMedievalArmory;
-import com.dgjalic.gyrosmedievalarmory.animation.AnimationState;
 import com.dgjalic.gyrosmedievalarmory.item.armor.LegacyOpenableHelmet;
 import com.dgjalic.gyrosmedievalarmory.networking.ModPackets;
 import com.dgjalic.gyrosmedievalarmory.networking.packet.OpenVisorC2SPacket;
-import com.dgjalic.gyrosmedievalarmory.networking.packet.SetHelmetAnimationStateC2SPacket;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;

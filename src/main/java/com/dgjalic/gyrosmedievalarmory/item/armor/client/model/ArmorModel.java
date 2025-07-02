@@ -1,6 +1,7 @@
 package com.dgjalic.gyrosmedievalarmory.item.armor.client.model;
 
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Iterables;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.model.HumanoidModel;
@@ -44,13 +45,13 @@ public class ArmorModel extends HumanoidModel<LivingEntity> {
                 this.hat.visible = true;
                 break;
             case CHEST:
-                this.body.visible = true;
+//                this.body.visible = true;
                 this.rightArm.visible = true;
-                this.leftArm.visible = true;
+//                this.leftArm.visible = true;
                 break;
             case LEGS:
                 this.leftLeg.visible = true;
-                this.rightLeg.visible = true;
+//                this.rightLeg.visible = true;
                 break;
             case FEET:
                 this.leftBoot.visible = true;
@@ -84,6 +85,6 @@ public class ArmorModel extends HumanoidModel<LivingEntity> {
 
     @Override
     protected @NotNull Iterable<ModelPart> bodyParts() {
-        return ImmutableList.of(this.body, this.rightArm, this.leftArm, this.rightLeg, this.leftLeg, this.hat, this.rightBoot, this.leftBoot);
+        return Iterables.concat(super.bodyParts(), ImmutableList.of(leftBoot, rightBoot));
     }
 }

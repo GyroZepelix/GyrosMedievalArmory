@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "T": {
+      "item": "gyrosmedievalarmory:iron_hammer"
+    },
+    "X": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "pattern": [
+    "XTX",
+    "X X"
+  ],
+  "result": {
+    "item": "gyrosmedievalarmory:plate_boots"
+  },
+  "show_notification": true
+}

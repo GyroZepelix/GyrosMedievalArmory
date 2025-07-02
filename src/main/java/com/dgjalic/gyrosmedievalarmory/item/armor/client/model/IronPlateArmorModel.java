@@ -6,6 +6,8 @@ import com.dgjalic.gyrosmedievalarmory.item.armor.LegacyOpenableHelmet;
 import com.dgjalic.gyrosmedievalarmory.item.armor.OpenableHelmet;
 import com.dgjalic.gyrosmedievalarmory.networking.ModPackets;
 import com.dgjalic.gyrosmedievalarmory.networking.packet.SetHelmetAnimationStateC2SPacket;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Iterables;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
@@ -45,51 +47,51 @@ public class IronPlateArmorModel extends ArmorModel{
 		}
 	}
 
-	protected void newSetupArmorPartAnim(@NotNull LivingEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-		ItemStack helmet = entity.getItemBySlot(EquipmentSlot.HEAD);
-		if (helmet.getItem() instanceof OpenableHelmet openableHelmet) {
-			float visorXRot = this.visor.xRot;
-
-			boolean isOpened = openableHelmet.isOpened(helmet);
-			AnimationState animationState = openableHelmet.getAnimationStatus(helmet);
-			float animationStartTick = openableHelmet.getTimestamp(helmet);
-
-			switch (animationState) {
-                case IDLE -> {
-					if (isOpened) {
-						visor.xRot = -1.5f;
-					} else {
-						visor.xRot = 0f;
-					}
-                }
-                case QUEUED -> {
-					if (!isOpened) {
-						visor.xRot = -1.5f;
-					} else {
-						visor.xRot = 0f;
-					}
-					ModPackets.sendToServer(new SetHelmetAnimationStateC2SPacket(isOpened, AnimationState.PLAYING, ageInTicks));
-                }
-                case PLAYING -> {
-					if (isOpened) {
-						this.visor.xRot = AnimationUtil.linearLerp(ageInTicks, animationStartTick, HELMET_OPEN_SPEED, 0f, -1.5f);
-					} else {
-						this.visor.xRot = AnimationUtil.linearLerp(ageInTicks, animationStartTick, HELMET_OPEN_SPEED, -1.5f, -0f);
-					}
-                }
-            }
-
-			if (visorXRot != 0.0f) {
-				this.visor_black.xScale = 0;
-				this.visor_black.yScale = 0;
-				this.visor_black.zScale = 0;
-			} else {
-				this.visor_black.xScale = 1;
-				this.visor_black.yScale = 1;
-				this.visor_black.zScale = 1;
-			}
-		}
-	}
+//	protected void newSetupArmorPartAnim(@NotNull LivingEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+//		ItemStack helmet = entity.getItemBySlot(EquipmentSlot.HEAD);
+//		if (helmet.getItem() instanceof OpenableHelmet openableHelmet) {
+//			float visorXRot = this.visor.xRot;
+//
+//			boolean isOpened = openableHelmet.isOpened(helmet);
+//			AnimationState animationState = openableHelmet.getAnimationStatus(helmet);
+//			float animationStartTick = openableHelmet.getTimestamp(helmet);
+//
+//			switch (animationState) {
+//                case IDLE -> {
+//					if (isOpened) {
+//						visor.xRot = -1.5f;
+//					} else {
+//						visor.xRot = 0f;
+//					}
+//                }
+//                case QUEUED -> {
+//					if (!isOpened) {
+//						visor.xRot = -1.5f;
+//					} else {
+//						visor.xRot = 0f;
+//					}
+//					ModPackets.sendToServer(new SetHelmetAnimationStateC2SPacket(isOpened, AnimationState.PLAYING, ageInTicks));
+//                }
+//                case PLAYING -> {
+//					if (isOpened) {
+//						this.visor.xRot = AnimationUtil.linearLerp(ageInTicks, animationStartTick, HELMET_OPEN_SPEED, 0f, -1.5f);
+//					} else {
+//						this.visor.xRot = AnimationUtil.linearLerp(ageInTicks, animationStartTick, HELMET_OPEN_SPEED, -1.5f, -0f);
+//					}
+//                }
+//            }
+//
+//			if (visorXRot != 0.0f) {
+//				this.visor_black.xScale = 0;
+//				this.visor_black.yScale = 0;
+//				this.visor_black.zScale = 0;
+//			} else {
+//				this.visor_black.xScale = 1;
+//				this.visor_black.yScale = 1;
+//				this.visor_black.zScale = 1;
+//			}
+//		}
+//	}
 
 	public static LayerDefinition createBodyLayer() {
 		MeshDefinition meshdefinition = new MeshDefinition();

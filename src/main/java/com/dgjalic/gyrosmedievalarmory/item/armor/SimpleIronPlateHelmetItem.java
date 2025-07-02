@@ -1,7 +1,8 @@
 package com.dgjalic.gyrosmedievalarmory.item.armor;
 
 import com.dgjalic.gyrosmedievalarmory.GyrosMedievalArmory;
-import com.dgjalic.gyrosmedievalarmory.item.armor.client.model.LeatherArmorModel;
+import com.dgjalic.gyrosmedievalarmory.item.armor.client.model.IronPlateArmorModel;
+import com.dgjalic.gyrosmedievalarmory.item.armor.client.model.PlateHelmetModel;
 import com.dgjalic.gyrosmedievalarmory.item.armor.client.provider.ArmorModelProvider;
 import com.dgjalic.gyrosmedievalarmory.item.armor.client.provider.SimpleModelProvider;
 import net.minecraft.resources.ResourceLocation;
@@ -11,14 +12,14 @@ import net.minecraft.world.item.ArmorMaterials;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.Nullable;
 
-public class LeatherArmorItem extends AbstractArmorItem {
-    private ResourceLocation TEXTURE_LOCATION = makeCustomTextureLocation(GyrosMedievalArmory.MODID, "leather_armor");
-    public LeatherArmorItem(Type pType) {
-        super(ArmorMaterials.LEATHER, pType, new Properties());
+public class SimpleIronPlateHelmetItem extends AbstractArmorItem implements LegacyOpenableHelmet {
+    private ResourceLocation TEXTURE_LOCATION = makeCustomTextureLocation(GyrosMedievalArmory.MODID, "iron_plate_helmet");
+    public SimpleIronPlateHelmetItem(Type pType) {
+        super(ArmorMaterials.IRON, pType, new Properties());
     }
 
-    public LeatherArmorItem(Type pType, String textureLocation) {
-        super(ArmorMaterials.LEATHER, pType, new Properties());
+    public SimpleIronPlateHelmetItem(Type pType, String textureLocation) {
+        super(ArmorMaterials.IRON, pType, new Properties());
         TEXTURE_LOCATION = makeCustomTextureLocation(GyrosMedievalArmory.MODID, textureLocation);
     }
 
@@ -29,7 +30,11 @@ public class LeatherArmorItem extends AbstractArmorItem {
 
     @Override
     public ArmorModelProvider createModelProvider() {
-        return new SimpleModelProvider(LeatherArmorModel::createBodyLayer, LeatherArmorModel::new, TEXTURE_LOCATION);
+        return new SimpleModelProvider(
+                PlateHelmetModel::createBodyLayer,
+                PlateHelmetModel::new,
+                TEXTURE_LOCATION
+        );
     }
 
     @Override

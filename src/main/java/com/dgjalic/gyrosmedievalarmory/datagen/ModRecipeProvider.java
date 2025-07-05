@@ -27,6 +27,14 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         leggingsWithToolItem(pWriter, ItemRegistry.LEATHER_HOSE.get(), Items.LEATHER, Items.STRING);
         bootsWithToolItem(pWriter, ItemRegistry.LEATHER_BOOTS.get(), Items.LEATHER, Items.STRING);
 
+        helmetWithToolItem(pWriter, ItemRegistry.LEATHER_HOOD.get(), Items.LEATHER, Items.STRING);
+        chestplateWithToolItem(pWriter, ItemRegistry.LEATHER_CLOAK.get(), Items.LEATHER, Items.STRING);
+
+        helmetWithToolItem(pWriter, ItemRegistry.PIRATE_HAT.get(), Items.LEATHER, Items.STRING);
+        chestplateWithToolItem(pWriter, ItemRegistry.PIRATE_JACKET.get(), Items.LEATHER, Items.STRING);
+        leggingsWithToolItem(pWriter, ItemRegistry.PIRATE_PANTS.get(), Items.LEATHER, Items.STRING);
+        bootsWithToolItem(pWriter, ItemRegistry.PIRATE_BOOTS.get(), Items.LEATHER, Items.STRING);
+
         helmetItem(pWriter, ItemRegistry.CHAINMAIL_COIF.get(), Items.CHAIN);
         chestplateItem(pWriter, ItemRegistry.CHAINMAIL_SLEEVELESS_TUNIC.get(), Items.CHAIN);
         chestplateWithSleevesItem(pWriter, ItemRegistry.CHAINMAIL_TUNIC.get(), ItemRegistry.CHAINMAIL_SLEEVELESS_TUNIC.get(), Items.CHAIN);
@@ -39,6 +47,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 //        leggingsWithToolItem(pWriter, ItemRegistry.PLATE_LEGGINGS.get(), Items.IRON_INGOT, ItemRegistry.IRON_HAMMER.get());
 //        bootsWithToolItem(pWriter, ItemRegistry.PLATE_BOOTS.get(), Items.IRON_INGOT, ItemRegistry.IRON_HAMMER.get());
         helmetItem(pWriter, ItemRegistry.PLATE_HELMET.get(), Items.IRON_INGOT);
+        helmetItem(pWriter, ItemRegistry.PLATE_BASCINET.get(), Items.IRON_INGOT);
         chestplateItem(pWriter, ItemRegistry.PLATE_CHESTPLATE.get(), Items.IRON_INGOT);
         leggingsItem(pWriter, ItemRegistry.PLATE_LEGGINGS.get(), Items.IRON_INGOT);
         bootsItem(pWriter, ItemRegistry.PLATE_BOOTS.get(), Items.IRON_INGOT);
@@ -54,13 +63,23 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 //        leggingsWithToolItem(pWriter, ItemRegistry.COPPER_LEGGINGS.get(), Items.COPPER_INGOT, ItemRegistry.WOODEN_HAMMER.get());
 //        bootsWithToolItem(pWriter, ItemRegistry.COPPER_BOOTS.get(), Items.COPPER_INGOT, ItemRegistry.WOODEN_HAMMER.get());
         helmetItem(pWriter, ItemRegistry.COPPER_HELMET.get(), Items.COPPER_INGOT);
+        helmetItem(pWriter, ItemRegistry.DECORATED_COPPER_HELMET.get(), Items.COPPER_INGOT);
         chestplateItem(pWriter, ItemRegistry.COPPER_CHESTPLATE.get(), Items.COPPER_INGOT);
         leggingsItem(pWriter, ItemRegistry.COPPER_LEGGINGS.get(), Items.COPPER_INGOT);
         bootsItem(pWriter, ItemRegistry.COPPER_BOOTS.get(), Items.COPPER_INGOT);
 
+        helmetItem(pWriter, ItemRegistry.HEAVY_COPPER_HELMET.get(), Items.COPPER_INGOT);
+        chestplateItem(pWriter, ItemRegistry.HEAVY_COPPER_CHESTPLATE.get(), Items.COPPER_INGOT);
+        leggingsItem(pWriter, ItemRegistry.HEAVY_COPPER_LEGGINGS.get(), Items.COPPER_INGOT);
+        bootsItem(pWriter, ItemRegistry.HEAVY_COPPER_BOOTS.get(), Items.COPPER_INGOT);
+
+        helmetItem(pWriter, ItemRegistry.TRIBAL_ORCISH_MASK.get(), Items.BONE);
+        chestplateItem(pWriter, ItemRegistry.TRIBAL_ORCISH_CHESTPLATE.get(), Items.BONE);
+        leggingsItem(pWriter, ItemRegistry.TRIBAL_ORCISH_LEGGINGS.get(), Items.BONE);
+        bootsItem(pWriter, ItemRegistry.TRIBAL_ORCISH_BOOTS.get(), Items.BONE);
+
         hammerLikeItem(pWriter, ItemRegistry.IRON_HAMMER.get(), Items.IRON_INGOT);
         hammerLikeItem(pWriter, ItemRegistry.WOODEN_HAMMER.get(), ItemTags.LOGS);
-
     }
 
     protected static class ArmorRecipeBuilders {

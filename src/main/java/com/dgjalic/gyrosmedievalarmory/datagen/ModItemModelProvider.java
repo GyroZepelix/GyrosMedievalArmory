@@ -29,6 +29,14 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ItemRegistry.LEATHER_HOSE);
         simpleItem(ItemRegistry.LEATHER_BOOTS);
 
+        simpleItem(ItemRegistry.LEATHER_HOOD);
+        simpleItem(ItemRegistry.LEATHER_CLOAK);
+
+        simpleItem(ItemRegistry.PIRATE_HAT);
+        simpleItem(ItemRegistry.PIRATE_JACKET);
+        simpleItem(ItemRegistry.PIRATE_PANTS);
+        simpleItem(ItemRegistry.PIRATE_BOOTS);
+
         simpleItem(ItemRegistry.PLATE_HELMET);
         simpleItem(ItemRegistry.PLATE_BASCINET);
         simpleItem(ItemRegistry.PLATE_CHESTPLATE);
@@ -45,6 +53,16 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ItemRegistry.COPPER_CHESTPLATE);
         simpleItem(ItemRegistry.COPPER_LEGGINGS);
         simpleItem(ItemRegistry.COPPER_BOOTS);
+
+        simpleItem(ItemRegistry.HEAVY_COPPER_HELMET);
+        simpleItem(ItemRegistry.HEAVY_COPPER_CHESTPLATE);
+        simpleItem(ItemRegistry.HEAVY_COPPER_LEGGINGS);
+        simpleItem(ItemRegistry.HEAVY_COPPER_BOOTS);
+
+        simpleItem(ItemRegistry.TRIBAL_ORCISH_MASK);
+        simpleItem(ItemRegistry.TRIBAL_ORCISH_CHESTPLATE);
+        simpleItem(ItemRegistry.TRIBAL_ORCISH_LEGGINGS);
+        simpleItem(ItemRegistry.TRIBAL_ORCISH_BOOTS);
     }
 
     private <T extends Item> ItemModelBuilder simpleItem(RegistryObject<T> item) {

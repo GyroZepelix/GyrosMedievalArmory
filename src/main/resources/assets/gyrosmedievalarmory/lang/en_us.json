@@ -13,6 +13,14 @@
   "item.gyrosmedievalarmory.leather_hose": "Leather Hose",
   "item.gyrosmedievalarmory.leather_boots": "Leather Boots",
 
+  "item.gyrosmedievalarmory.leather_hood": "Leather Hood",
+  "item.gyrosmedievalarmory.leather_cloak": "Leather Cloak",
+
+  "item.gyrosmedievalarmory.pirate_hat": "Pirate Cap",
+  "item.gyrosmedievalarmory.pirate_jacket": "Pirate Jacket",
+  "item.gyrosmedievalarmory.pirate_pants": "Pirate Pants",
+  "item.gyrosmedievalarmory.pirate_boots": "Pirate Boots",
+
   "item.gyrosmedievalarmory.plate_helmet": "Plate Helmet",
   "item.gyrosmedievalarmory.plate_bascinet": "Plate Bascinet",
   "item.gyrosmedievalarmory.plate_chestplate": "Plate Chestplate",
@@ -29,6 +37,16 @@
   "item.gyrosmedievalarmory.copper_chestplate": "Copper Chestplate",
   "item.gyrosmedievalarmory.copper_leggings": "Copper Leggings",
   "item.gyrosmedievalarmory.copper_boots": "Copper Boots",
+
+  "item.gyrosmedievalarmory.heavy_copper_helmet": "Heavy Copper Helmet",
+  "item.gyrosmedievalarmory.heavy_copper_chestplate": "Heavy Copper Chestplate",
+  "item.gyrosmedievalarmory.heavy_copper_leggings": "Heavy Copper Leggings",
+  "item.gyrosmedievalarmory.heavy_copper_boots": "Heavy Copper Boots",
+
+  "item.gyrosmedievalarmory.tribal_orcish_mask": "Tribal Orcish Mask",
+  "item.gyrosmedievalarmory.tribal_orcish_chestplate": "Tribal Orcish Chestplate",
+  "item.gyrosmedievalarmory.tribal_orcish_leggings": "Tribal Orcish Leggings",
+  "item.gyrosmedievalarmory.tribal_orcish_boots": "Tribal Orcish Boots",
 
   "item.gyrosmedievalarmory.iron_hammer": "Hammer",
   "item.gyrosmedievalarmory.wooden_hammer": "Mallet",

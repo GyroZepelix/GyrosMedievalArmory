@@ -30,6 +30,14 @@ public enum ModArmorMaterials implements StringRepresentable, ArmorMaterial {
         map.put(ArmorItem.Type.HELMET, 3);
     }), 9, SoundEvents.ARMOR_EQUIP_IRON, 1.0F, 0.1F, () -> {
         return Ingredient.of(Items.IRON_INGOT);
+    }),
+    BONE("bone", 5, Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266652_) -> {
+        p_266652_.put(ArmorItem.Type.BOOTS, 1);
+        p_266652_.put(ArmorItem.Type.LEGGINGS, 2);
+        p_266652_.put(ArmorItem.Type.CHESTPLATE, 3);
+        p_266652_.put(ArmorItem.Type.HELMET, 1);
+    }), 15, SoundEvents.ARMOR_EQUIP_LEATHER, 0.0F, 0.0F, () -> {
+        return Ingredient.of(Items.BONE);
     });
 
     public static final StringRepresentable.EnumCodec<ArmorMaterials> CODEC = StringRepresentable.fromEnum(ArmorMaterials::values);

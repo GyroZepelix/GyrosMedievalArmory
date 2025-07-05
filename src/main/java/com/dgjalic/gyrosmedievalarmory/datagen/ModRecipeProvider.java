@@ -33,20 +33,30 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         leggingsItem(pWriter, ItemRegistry.CHAINMAIL_LEGGINGS.get(), Items.CHAIN);
         bootsItem(pWriter, ItemRegistry.CHAINMAIL_BOOTS.get(), Items.CHAIN);
 
-        helmetWithToolItem(pWriter, ItemRegistry.PLATE_HELMET.get(), Items.IRON_INGOT, ItemRegistry.IRON_HAMMER.get());
-        chestplateWithToolItem(pWriter, ItemRegistry.PLATE_CHESTPLATE.get(), Items.IRON_INGOT, ItemRegistry.IRON_HAMMER.get());
-        leggingsWithToolItem(pWriter, ItemRegistry.PLATE_LEGGINGS.get(), Items.IRON_INGOT, ItemRegistry.IRON_HAMMER.get());
-        bootsWithToolItem(pWriter, ItemRegistry.PLATE_BOOTS.get(), Items.IRON_INGOT, ItemRegistry.IRON_HAMMER.get());
+        // Simplified recipes for MVP
+//        helmetWithToolItem(pWriter, ItemRegistry.PLATE_HELMET.get(), Items.IRON_INGOT, ItemRegistry.IRON_HAMMER.get());
+//        chestplateWithToolItem(pWriter, ItemRegistry.PLATE_CHESTPLATE.get(), Items.IRON_INGOT, ItemRegistry.IRON_HAMMER.get());
+//        leggingsWithToolItem(pWriter, ItemRegistry.PLATE_LEGGINGS.get(), Items.IRON_INGOT, ItemRegistry.IRON_HAMMER.get());
+//        bootsWithToolItem(pWriter, ItemRegistry.PLATE_BOOTS.get(), Items.IRON_INGOT, ItemRegistry.IRON_HAMMER.get());
+        helmetItem(pWriter, ItemRegistry.PLATE_HELMET.get(), Items.IRON_INGOT);
+        chestplateItem(pWriter, ItemRegistry.PLATE_CHESTPLATE.get(), Items.IRON_INGOT);
+        leggingsItem(pWriter, ItemRegistry.PLATE_LEGGINGS.get(), Items.IRON_INGOT);
+        bootsItem(pWriter, ItemRegistry.PLATE_BOOTS.get(), Items.IRON_INGOT);
 
         helmetItem(pWriter, ItemRegistry.CRUDE_COPPER_HELMET.get(), Items.COPPER_INGOT);
         chestplateItem(pWriter, ItemRegistry.CRUDE_COPPER_CHESTPLATE.get(), Items.COPPER_INGOT);
         leggingsItem(pWriter, ItemRegistry.CRUDE_COPPER_LEGGINGS.get(), Items.COPPER_INGOT);
         bootsItem(pWriter, ItemRegistry.CRUDE_COPPER_BOOTS.get(), Items.COPPER_INGOT);
 
-        helmetWithToolItem(pWriter, ItemRegistry.COPPER_HELMET.get(), Items.COPPER_INGOT, ItemRegistry.WOODEN_HAMMER.get());
-        chestplateWithToolItem(pWriter, ItemRegistry.COPPER_CHESTPLATE.get(), Items.COPPER_INGOT, ItemRegistry.WOODEN_HAMMER.get());
-        leggingsWithToolItem(pWriter, ItemRegistry.COPPER_LEGGINGS.get(), Items.COPPER_INGOT, ItemRegistry.WOODEN_HAMMER.get());
-        bootsWithToolItem(pWriter, ItemRegistry.COPPER_BOOTS.get(), Items.COPPER_INGOT, ItemRegistry.WOODEN_HAMMER.get());
+        // Simplified recipes for MVP
+//        helmetWithToolItem(pWriter, ItemRegistry.COPPER_HELMET.get(), Items.COPPER_INGOT, ItemRegistry.WOODEN_HAMMER.get());
+//        chestplateWithToolItem(pWriter, ItemRegistry.COPPER_CHESTPLATE.get(), Items.COPPER_INGOT, ItemRegistry.WOODEN_HAMMER.get());
+//        leggingsWithToolItem(pWriter, ItemRegistry.COPPER_LEGGINGS.get(), Items.COPPER_INGOT, ItemRegistry.WOODEN_HAMMER.get());
+//        bootsWithToolItem(pWriter, ItemRegistry.COPPER_BOOTS.get(), Items.COPPER_INGOT, ItemRegistry.WOODEN_HAMMER.get());
+        helmetItem(pWriter, ItemRegistry.COPPER_HELMET.get(), Items.COPPER_INGOT);
+        chestplateItem(pWriter, ItemRegistry.COPPER_CHESTPLATE.get(), Items.COPPER_INGOT);
+        leggingsItem(pWriter, ItemRegistry.COPPER_LEGGINGS.get(), Items.COPPER_INGOT);
+        bootsItem(pWriter, ItemRegistry.COPPER_BOOTS.get(), Items.COPPER_INGOT);
 
         hammerLikeItem(pWriter, ItemRegistry.IRON_HAMMER.get(), Items.IRON_INGOT);
         hammerLikeItem(pWriter, ItemRegistry.WOODEN_HAMMER.get(), ItemTags.LOGS);

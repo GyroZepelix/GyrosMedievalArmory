@@ -192,7 +192,8 @@ tasks.named('jar', Jar).configure {
                 'Implementation-Title'    : project.name,
                 'Implementation-Version'  : project.jar.archiveVersion,
                 'Implementation-Vendor'   : mod_authors,
-                'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+                'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+                'MixinConfigs': 'mixins.gyrosmedievalarmory.json'
         ])
     }
 
@@ -221,4 +222,8 @@ publishing {
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
+    options.compilerArgs += [
+            '-AreobfSrgFile=' + file('build/tmp/reobfJar/output.srg'),
+            '-AoutRefMapFile=' + file('build/resources/main/gyrosmedievalarmory.refmap.json')
+    ]
 }

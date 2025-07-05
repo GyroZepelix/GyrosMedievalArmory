@@ -63,7 +63,7 @@ public abstract class MixinHumanoidArmorLayer<T extends LivingEntity, M extends 
     }
 
     @Shadow
-    protected net.minecraft.client.model.Model getArmorModelHook(T entity, ItemStack itemStack, EquipmentSlot slot, A model) {
+    protected Model getArmorModelHook(T entity, ItemStack itemStack, EquipmentSlot slot, A model) {
         throw new IllegalStateException("Mixin failed to shadow getArmorModelHook()");
     }
 

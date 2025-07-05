@@ -59,10 +59,6 @@ public class AbstractArmorItem extends ArmorItem {
 
     public ArmorModelProvider createModelProvider() { return null;}
 
-    /***
-     * The rendering here should never happen because of the custom renderer implementation in MixinHumanoidArmorLayer. Due to compatibility with some mods I will leave this here.
-     * @see com.dgjalic.gyrosmedievalarmory.mixin.MixinHumanoidArmorLayer
-     */
     @Override
     public void initializeClient(@NotNull Consumer<IClientItemExtensions> consumer) {
         if (!withCustomModel()) return;

@@ -89,6 +89,7 @@ public class ArmorModel extends HumanoidModel<LivingEntity> {
         super.renderToBuffer(stack, consumer, packedLight, packedOverlay, r, g, b, a);
         this.leftBoot.render(stack, consumer, packedLight, packedOverlay, r, g, b, a);
         this.rightBoot.render(stack, consumer, packedLight, packedOverlay, r, g, b, a);
+        this.waist.render(stack, consumer, packedLight, packedOverlay, r, g, b, a);
     }
 
     /**
@@ -106,10 +107,11 @@ public class ArmorModel extends HumanoidModel<LivingEntity> {
         original.copyPropertiesTo((HumanoidModel) this);
         this.rightBoot.copyFrom(original.rightLeg);
         this.leftBoot.copyFrom(original.leftLeg);
+        this.waist.copyFrom(original.body);
     }
 
     @Override
     protected @NotNull Iterable<ModelPart> bodyParts() {
-        return Iterables.concat(super.bodyParts(), ImmutableList.of(leftBoot, rightBoot));
+        return Iterables.concat(super.bodyParts(), ImmutableList.of(leftBoot, rightBoot, waist));
     }
 }

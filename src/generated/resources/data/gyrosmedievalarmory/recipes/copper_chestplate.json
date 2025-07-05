@@ -2,15 +2,12 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "T": {
-      "item": "gyrosmedievalarmory:wooden_hammer"
-    },
     "X": {
       "item": "minecraft:copper_ingot"
     }
   },
   "pattern": [
-    "XTX",
+    "X X",
     "XXX",
     "XXX"
   ],

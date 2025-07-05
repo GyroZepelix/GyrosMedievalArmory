@@ -11,7 +11,7 @@ public class ChainmailArmorModel extends ArmorModel {
 	}
 
 	public static LayerDefinition createBodyLayer() {
-		MeshDefinition meshdefinition = new MeshDefinition();
+		MeshDefinition meshdefinition = templateLayerDefinition(1f);
 		PartDefinition partdefinition = meshdefinition.getRoot();
 
 		PartDefinition head = partdefinition.addOrReplaceChild("head", CubeListBuilder.create().texOffs(0, 60).addBox(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new CubeDeformation(0.0F))
@@ -41,8 +41,6 @@ public class ChainmailArmorModel extends ArmorModel {
 		PartDefinition left_boot = partdefinition.addOrReplaceChild("left_boot", CubeListBuilder.create().texOffs(40, 44).mirror().addBox(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, new CubeDeformation(0.75F)).mirror(false), PartPose.offset(1.9F, 12.0F, 0.0F));
 
 		PartDefinition right_boot = partdefinition.addOrReplaceChild("right_boot", CubeListBuilder.create().texOffs(40, 44).addBox(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, new CubeDeformation(0.75F)), PartPose.offset(-1.9F, 12.0F, 0.0F));
-
-		PartDefinition hat = partdefinition.addOrReplaceChild("hat", CubeListBuilder.create(), PartPose.offset(0.0F, 24.0F, 0.0F));
 
 		return LayerDefinition.create(meshdefinition, 128, 128);
 	}

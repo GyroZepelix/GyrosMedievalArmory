@@ -1,13 +1,8 @@
 package com.dgjalic.gyrosmedievalarmory.item.armor.client.model;
 
-import com.dgjalic.gyrosmedievalarmory.item.armor.LegacyOpenableHelmet;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
-import org.jetbrains.annotations.NotNull;
 
 public class CopperArmorModel extends ArmorModel{
 
@@ -16,7 +11,7 @@ public class CopperArmorModel extends ArmorModel{
 	}
 
 	public static LayerDefinition createBodyLayer() {
-		MeshDefinition meshdefinition = new MeshDefinition();
+		MeshDefinition meshdefinition = templateLayerDefinition(1f);
 		PartDefinition partdefinition = meshdefinition.getRoot();
 
 		PartDefinition hat = partdefinition.addOrReplaceChild("hat", CubeListBuilder.create(), PartPose.offset(0.0F, -10.0F, 0.0F));

@@ -87,7 +87,7 @@ public class IronPlateArmorModel extends ArmorModel{
 //	}
 
 	public static LayerDefinition createBodyLayer() {
-		MeshDefinition meshdefinition = new MeshDefinition();
+		MeshDefinition meshdefinition = templateLayerDefinition(1f);
 		PartDefinition partdefinition = meshdefinition.getRoot();
 
 		PartDefinition hat = partdefinition.addOrReplaceChild("hat", CubeListBuilder.create(), PartPose.offset(0.0F, 0.0F, 0.0F));

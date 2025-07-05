@@ -1,13 +1,6 @@
 package com.dgjalic.gyrosmedievalarmory.item.armor.client.model;
 
-import com.dgjalic.gyrosmedievalarmory.animation.AnimationState;
-import com.dgjalic.gyrosmedievalarmory.animation.AnimationUtil;
 import com.dgjalic.gyrosmedievalarmory.item.armor.LegacyOpenableHelmet;
-import com.dgjalic.gyrosmedievalarmory.item.armor.OpenableHelmet;
-import com.dgjalic.gyrosmedievalarmory.networking.ModPackets;
-import com.dgjalic.gyrosmedievalarmory.networking.packet.SetHelmetAnimationStateC2SPacket;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Iterables;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;

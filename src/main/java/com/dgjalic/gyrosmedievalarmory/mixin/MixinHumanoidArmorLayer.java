@@ -6,6 +6,7 @@ import com.dgjalic.gyrosmedievalarmory.item.armor.client.provider.ArmorModelProv
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.model.HumanoidModel;
+import net.minecraft.client.model.Model;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
@@ -16,6 +17,7 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -35,6 +37,7 @@ public abstract class MixinHumanoidArmorLayer<T extends LivingEntity, M extends 
         this.gyrosMedievalArmory$renderCustomArmor(pPoseStack, pBuffer, pLivingEntity, EquipmentSlot.FEET, pPackedLight, pLimbSwing, pLimbSwingAmount, pAgeInTicks, pNetHeadYaw, pHeadPitch);
     }
 
+    @SuppressWarnings("unchecked")
     @Unique
     private void gyrosMedievalArmory$renderCustomArmor(PoseStack stack, MultiBufferSource buffer, T entity, EquipmentSlot slot, int packedLight, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
         ItemStack itemStack = entity.getItemBySlot(slot);
@@ -42,14 +45,11 @@ public abstract class MixinHumanoidArmorLayer<T extends LivingEntity, M extends 
             if (armorItem.getEquipmentSlot() == slot) {
                 ArmorModelProvider provider = armorItem.createModelProvider();
                 if(provider != null){
-                    ArmorModel model = provider.getModel();
-                    model.partVisible(slot);
+                    ArmorModel armorModel = provider.getModel();
+                    armorModel.copyModelProperties(this.getParentModel());
+                    armorModel.partVisible(slot);
+                    Model model = getArmorModelHook(entity, itemStack, slot, (A) armorModel);
 
-                    model.copyModelProperties(this.getParentModel());
-                    model.young = entity.isBaby();
-                    model.crouching = entity.isCrouching();
-                    model.riding = this.getParentModel().riding;
-                    model.setupAnim(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
                     VertexConsumer vertexconsumer = buffer.getBuffer(RenderType.armorCutoutNoCull(provider.getTexture()));
                     model.renderToBuffer(stack, vertexconsumer, packedLight, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
 
@@ -60,6 +60,11 @@ public abstract class MixinHumanoidArmorLayer<T extends LivingEntity, M extends 
             }
         }
 
+    }
+
+    @Shadow
+    protected net.minecraft.client.model.Model getArmorModelHook(T entity, ItemStack itemStack, EquipmentSlot slot, A model) {
+        throw new IllegalStateException("Mixin failed to shadow getArmorModelHook()");
     }
 
     /**

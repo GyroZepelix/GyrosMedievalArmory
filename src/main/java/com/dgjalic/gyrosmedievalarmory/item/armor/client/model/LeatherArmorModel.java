@@ -11,7 +11,7 @@ public class LeatherArmorModel extends ArmorModel{
 	}
 
 	public static LayerDefinition createBodyLayer() {
-		MeshDefinition meshdefinition = new MeshDefinition();
+		MeshDefinition meshdefinition = templateLayerDefinition(1f);
 		PartDefinition partdefinition = meshdefinition.getRoot();
 
 		PartDefinition hat = partdefinition.addOrReplaceChild("hat", CubeListBuilder.create(), PartPose.offset(-1.9F, 12.0F, 0.0F));

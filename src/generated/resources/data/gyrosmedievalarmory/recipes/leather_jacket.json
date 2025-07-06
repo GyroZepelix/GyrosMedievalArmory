@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "T": {
+      "item": "minecraft:string"
+    },
+    "X": {
+      "item": "minecraft:leather"
+    }
+  },
+  "pattern": [
+    "XTX",
+    "XXX",
+    "XXX"
+  ],
+  "result": {
+    "item": "gyrosmedievalarmory:leather_jacket"
+  },
+  "show_notification": true
+}

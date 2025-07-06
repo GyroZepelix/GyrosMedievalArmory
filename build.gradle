@@ -155,6 +155,14 @@ dependencies {
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
 }
 
+mixin {
+    add sourceSets.main, 'mixins.gyrosmedievalarmory.refmap.json'
+    config 'mixins.gyrosmedievalarmory.json'
+
+    debug.verbose = true
+    debug.export = true
+}
+
 // This block of code expands all declared replace properties in the specified resource targets.
 // A missing property will result in an error. Properties are expanded using ${} Groovy notation.
 // When "copyIdeResources" is enabled, this will also run before the game launches in IDE environments.
@@ -184,7 +192,8 @@ tasks.named('jar', Jar).configure {
                 'Implementation-Title'    : project.name,
                 'Implementation-Version'  : project.jar.archiveVersion,
                 'Implementation-Vendor'   : mod_authors,
-                'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+                'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+                'MixinConfigs': 'mixins.gyrosmedievalarmory.json'
         ])
     }
 
@@ -213,4 +222,8 @@ publishing {
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
+    options.compilerArgs += [
+            '-AreobfSrgFile=' + file('build/tmp/reobfJar/output.srg'),
+            '-AoutRefMapFile=' + file('build/resources/main/gyrosmedievalarmory.refmap.json')
+    ]
 }

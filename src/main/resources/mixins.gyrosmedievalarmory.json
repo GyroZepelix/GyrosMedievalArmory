@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.dgjalic.gyrosmedievalarmory.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "mixins.gyrosmedievalarmory.refmap.json",
+  "client": [
+    "MixinHumanoidArmorLayer"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

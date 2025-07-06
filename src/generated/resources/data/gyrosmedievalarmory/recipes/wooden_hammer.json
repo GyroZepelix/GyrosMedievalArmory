@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "S": {
+      "item": "minecraft:stick"
+    },
+    "X": {
+      "tag": "minecraft:logs"
+    }
+  },
+  "pattern": [
+    "XXX",
+    "XSX",
+    " S "
+  ],
+  "result": {
+    "item": "gyrosmedievalarmory:wooden_hammer"
+  },
+  "show_notification": true
+}

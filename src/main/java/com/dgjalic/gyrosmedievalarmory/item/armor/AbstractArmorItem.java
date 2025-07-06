@@ -57,7 +57,7 @@ public class AbstractArmorItem extends ArmorItem {
 
     protected boolean withCustomModel() { return false; }
 
-    protected ArmorModelProvider createModelProvider() { return null;}
+    public ArmorModelProvider createModelProvider() { return null;}
 
     @Override
     public void initializeClient(@NotNull Consumer<IClientItemExtensions> consumer) {
@@ -67,7 +67,7 @@ public class AbstractArmorItem extends ArmorItem {
 
             @Override
             public @NotNull ArmorModel getHumanoidArmorModel(LivingEntity living, ItemStack stack, EquipmentSlot slot, HumanoidModel<?> original) {
-                ArmorModel armorModel = provider.getModel(living, stack, slot);
+                ArmorModel armorModel = provider.getModel();
                 armorModel.partVisible(slot);
                 armorModel.crouching = original.crouching;
                 armorModel.riding = original.riding;
@@ -77,23 +77,14 @@ public class AbstractArmorItem extends ArmorItem {
 
             @Override
             public @NotNull Model getGenericArmorModel(LivingEntity livingEntity, ItemStack itemStack, EquipmentSlot equipmentSlot, HumanoidModel<?> original) {
-                //fixes visibility bug because forge pain
                 ArmorModel model = getHumanoidArmorModel(livingEntity, itemStack, equipmentSlot, original);
-                copyModelProperties(original, model);
-                provider.applyOffsets(model, livingEntity, itemStack, equipmentSlot);
+                model.copyModelProperties(original);
                 return model;
-            }
-
-            @SuppressWarnings("unchecked")
-            private <T extends LivingEntity> void copyModelProperties(HumanoidModel<T> original, ArmorModel replacement) {
-                original.copyPropertiesTo((HumanoidModel<T>) replacement);
-                replacement.rightBoot.copyFrom(original.rightLeg);
-                replacement.leftBoot.copyFrom(original.leftLeg);
             }
         });
     }
 
-    public static String makeCustomTextureLocation(String nameSpace, String id) {
-        return ResourceLocation.fromNamespaceAndPath(nameSpace, "textures/models/armor/custom/" + id + ".png").toString();
+    public static ResourceLocation makeCustomTextureLocation(String nameSpace, String id) {
+        return ResourceLocation.fromNamespaceAndPath(nameSpace, "textures/models/armor/custom/" + id + ".png");
     }
 }

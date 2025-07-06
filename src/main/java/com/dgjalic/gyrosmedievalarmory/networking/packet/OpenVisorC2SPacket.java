@@ -1,6 +1,6 @@
 package com.dgjalic.gyrosmedievalarmory.networking.packet;
 
-import com.dgjalic.gyrosmedievalarmory.item.armor.OpenableHelmet;
+import com.dgjalic.gyrosmedievalarmory.item.armor.LegacyOpenableHelmet;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -29,8 +29,8 @@ public class OpenVisorC2SPacket {
                 ServerLevel level = player.serverLevel();
                 ItemStack helmet = player.getItemBySlot(EquipmentSlot.HEAD);
 
-                if (helmet.getItem() instanceof OpenableHelmet openableHelmet) {
-                    openableHelmet.changeHelmetStyle(helmet, level, player);
+                if (helmet.getItem() instanceof LegacyOpenableHelmet legacyOpenableHelmet) {
+                    legacyOpenableHelmet.changeHelmetStyle(helmet, level, player);
                 }
             }
         });

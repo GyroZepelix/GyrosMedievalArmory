@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "T": {
+      "item": "minecraft:string"
+    },
+    "X": {
+      "item": "minecraft:leather"
+    }
+  },
+  "pattern": [
+    "XXX",
+    "XTX",
+    "X X"
+  ],
+  "result": {
+    "item": "gyrosmedievalarmory:pirate_pants"
+  },
+  "show_notification": true
+}
